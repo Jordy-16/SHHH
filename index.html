@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Shhh</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        let gifs = [
+            "https://giphy.com/embed/l49K0VSPusJDkPOOk",
+            "https://giphy.com/embed/CPRW8Qq77eXPq",
+            "https://giphy.com/embed/3oFzmfcqzIswtsVQwo",
+            "https://giphy.com/embed/26FLdmIp6wJr91JAI",
+            "https://giphy.com/embed/3ofT5ySFXZ01oJ7aoM",
+            "https://giphy.com/embed/TdL0bbk08WP2S0RMnX",
+            "https://giphy.com/embed/eiRpSPB8OSGVcbkOIJ",
+            "https://giphy.com/embed/xT39D4GSIcBwuelhfy",
+            "https://giphy.com/embed/LpoT1DojgcyW9QrCil"
+        ];
+
+        let currentGifIndex = 0;
+
+        function changeGif() {
+            document.getElementById("gifContainer").src = gifs[currentGifIndex];
+            currentGifIndex = (currentGifIndex + 1) % gifs.length;
+        }
+
+        setInterval(changeGif, 2000); // Cambia cada 10 segundos
+
+        function CuandoDigaSi(){
+            let respuestas = [
+                "Sabía que dirías que sí ❤️ TE AMO MUCHO",
+                "¡Gracias por decir que sí, mi niña! 🌟",
+                "Sabía que elegirías el 'sí', pero ¿cuántas veces intentaste darle al 'no'? 😜",
+                "¡Eres increíble! ¡Nos espera un futuro hermoso juntos! 🌈",
+                "Contigo, cada día es especial ✨",
+                "Ahora somos oficialmente inseparables 💑",
+                "¿Cuántas veces intentaste escapar antes de rendirte? 😏",
+                "¡Te atrapé! No podías decir que no 😆",
+                "¡Bienvenida a nuestra aventura! 🎉"
+            ];
+
+            document.getElementById("lblResultado").innerHTML = respuestas[Math.floor(Math.random() * respuestas.length)];
+        }
+
+        function CuandoDigaNo(){
+            let ancho = window.innerWidth;
+            let alto = window.innerHeight;
+
+            let x = (Math.random() * ancho) + "px";
+            let y = (Math.random() * alto) + "px";
+
+            document.getElementById('btnNo').style.position = "absolute";
+            document.getElementById('btnNo').style.left = x;
+            document.getElementById('btnNo').style.top = y;
+        }
+    </script>
+</head>
+<body>
+    <h1>Puedo ser tu novio?</h1>
+
+    <!-- Contenedor del GIF -->
+    <iframe id="gifContainer" src="https://giphy.com/embed/l49K0VSPusJDkPOOk" width="480" height="317" style="border:none;" frameBorder="0" allowFullScreen></iframe>
+    
+    <!-- Contenedor de botones -->
+    <div id="buttonContainer">
+        <a id="btnSi" onclick="CuandoDigaSi()">SI</a>
+        <a id="btnNo" onmouseover="CuandoDigaNo()">NO</a>
+    </div>
+
+    <!-- Respuestas -->
+    <p id="lblResultado"></p>
+</body>
+</html>
